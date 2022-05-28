@@ -8,9 +8,10 @@ class LocalFetcher(IFetcher):
         self.processConfig()
 
     def processConfig(self):
-        ...
+        self.dataReader = self.dataGenerator()
+        next(self.dataReader)
 
-    def readData(self):
+    def dataGenerator(self):
         with open(self.configPath) as csvfile:
            linesProcessor = reader(csvfile)
            for line in linesProcessor:
@@ -18,4 +19,5 @@ class LocalFetcher(IFetcher):
                # fields meaning
                # config, convection or
                # belief in headers consistency
+               # FOR NOW - use yfinance schema
                yield line
