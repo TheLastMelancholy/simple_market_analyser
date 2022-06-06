@@ -1,5 +1,6 @@
-from IFetcher import IFetcher
+from Fetchers.IFetcher import IFetcher
 from csv import DictReader
+from Fetchers.DataModel import Bar
 
 class LocalFetcher(IFetcher):
     def __init__(self, dataSheetPath):
@@ -16,13 +17,13 @@ class LocalFetcher(IFetcher):
            # TODO - exceptions processing or
            # data pre-validation
 
-           linesProcessor = DictReader(csvfile, fields=["Date",
-                                                        "Open",
-                                                        "High",
-                                                        "Low",
-                                                        "Close",
-                                                        "Adj Close",
-                                                        "Volume"])
+           linesProcessor = DictReader(csvfile)#, fields=["Date",
+                                                #         "Open",
+                                                 #        "High",
+                                                  #        "Low",
+                                                   #       "Close",
+                                                    #      "Adj Close",
+                                                     #     "Volume"])
            for line in linesProcessor:
                # TODO - Decide on how to deduce
                # fields meaning
