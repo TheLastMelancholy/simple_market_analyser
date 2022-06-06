@@ -1,5 +1,5 @@
 from IFetcher import IFetcher
-from csv import reader
+from csv import DictReader
 
 class LocalFetcher(IFetcher):
     def __init__(self, dataSheetPath):
@@ -13,11 +13,28 @@ class LocalFetcher(IFetcher):
 
     def dataGenerator(self):
         with open(self.configPath) as csvfile:
-           linesProcessor = reader(csvfile)
+           # TODO - exceptions processing or
+           # data pre-validation
+
+           linesProcessor = DictReader(csvfile, fields=["Date",
+                                                        "Open",
+                                                        "High",
+                                                        "Low",
+                                                        "Close",
+                                                        "Adj Close",
+                                                        "Volume"])
            for line in linesProcessor:
                # TODO - Decide on how to deduce
                # fields meaning
                # config, convection or
                # belief in headers consistency
                # FOR NOW - use yfinance schema
-               yield line
+
+               priceBar = Bar()
+               priceBar.O = line["Open"]
+               priceBar.C = line["Close"]
+               priceBar.H = line["High"]
+               priceBar.L = line["Low"]
+               priceBar.Volume = line["Volume"]
+
+               yield priceBar

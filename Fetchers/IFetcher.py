@@ -1,4 +1,6 @@
 from collections import namedtuple
+from DataModel import *
+
 Price = namedtuple("Price", ["open","close","high","low","volume"])
 
 class IFetcher():
