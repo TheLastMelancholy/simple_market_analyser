@@ -1,0 +1,16 @@
+{
+"ticker":"AUDUSD=X",
+"commonName":"Australian dollar, us dollar".
+"syncData":
+	[
+		{"timeframe":"15M",
+		"csvfile": "AUDUSD15M.csv",
+		"lastUpdate": "NEVER"},
+		{"timeframe":"1H",
+		"csvfile": "AUDUSD1H.csv",
+		"lastUpdate": "NEVER"},
+		{"timeframe":"1D",
+		"csvfile": "AUDUSD1D.csv",
+		"lastUpdate": "NEVER"}
+	]
+}
