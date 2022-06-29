@@ -9,7 +9,9 @@ class TickersUpdater(self):
         self.synchronizers = []
 
     def initializeSynchronizers(self):
-        jsonFiles = filter(os.listdir(self.dirPath))
+        jsonFiles = filter(lambda _ : ".json" in _, os.listdir(self.dirPath))
+        for file in jsonFiles:
+            self.synchronizers.append(TokenSynchronizer(file))
 
 class TokenSynchronizer():
     def __init__(self, configPath):
