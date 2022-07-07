@@ -11,6 +11,7 @@ class Visualiser():
         # Read data from some csv file
 
     def listDataSources(self):
+        return os.listdir(self.assetsDescriptorsPath)
         # return csv files from directory
 
     def createAssetsMapping(self):
